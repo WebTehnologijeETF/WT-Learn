@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <link rel="stylesheet" href="main.css">
+        <meta charset="UTF-8">
+        <title>Kontakt | WT Learn</title>
+    </head>
+    <body class="l-kontakt">
+    <div id="frame">
+        <div id="head">
+            WT Learn
+        </div>
+        <div id="meni">
+            <ul>
+                <li><a class="l-home" href="index.html">Naslovnica</a></li>
+                <li><a class="l-novosti" href="novosti.html">Novosti</a></li>
+                <li><a class="l-mogucnosti" href="mogucnosti.html">Mogućnosti</a></li>
+                <li><a class="l-linkovi" href="linkovi.html">Linkovi</a></li>
+                <li><a class="l-kontakt" href="kontakt.html">Kontakt</a></li>
+            </ul>
+            <div class="clr">
+            </div>
+        </div>
+        <div id="knkt" class="mrgn">
+            <h1>
+                Kontaktirajte nas
+                <abbr title="3 HTML5 komponente su: 'email', 'url' i 'autofocus' za prvi textbox... rade u svim popularnim browserima.">
+                    (Info)</abbr>
+            </h1>
+            <form id="forma" method="post" action="kontakt.php">
+                <div id="lijevo">
+                    <p>Ime <span class="span-req">*</span></p>
+                    <p>E-mail <span class="span-req">*</span></p>
+                    <p>URL vaše web stranice</p>
+                    <p>Komentar <span class="span-req">*</span></p>
+                </div>
+                <div id="desno">
+                    <div class="desno-cont">
+                        <input type="text" name="ime" autofocus required class="input-el">
+                    </div>
+                    <div class="desno-cont">
+                        <input type="email" name="email" required class="input-el">
+                    </div>
+                    <div class="desno-cont">
+                        <input type="url" name="url" class="input-el">
+                    </div>
+                    <div class="desno-cont">
+                        <textarea name="comment" id="komentar"></textarea>
+                    </div>
+                    <div id="lijevo-dugmad">
+                        <input type="reset" value="Očisti sve" class="dugme">
+                        <input type="submit" value="Pošalji" class="dugme">
+                    </div>
+                </div>
+                    <div class="clr"></div>
+
+            </form>
+        </div>
+        <div id="footer">
+            WT Learn - sistem za interaktivno učenje WT-a <br>
+            Copyright &copy; 2015 by Enil Pajić
+        </div>
+    </div>
+
+    </body>
+</html>

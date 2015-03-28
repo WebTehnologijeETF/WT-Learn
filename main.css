@@ -1,0 +1,347 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,900italic);
+@import url(http://fonts.googleapis.com/css?family=Lora);
+* {
+    margin: 0;
+    padding: 0;
+    /*font-family: 'Cambria', sans-serif; */
+    font-family: 'Lora', serif;
+}
+html {
+    background-color: #FFFFFF;
+}
+a, a:active {
+    color:lime;
+}
+a:hover {
+    font-weight: bolder;
+}
+a:visited {
+    color: limegreen;
+}
+#frame {
+    background: #5F5F61; /* #707070; */
+    width: 1024px; /* ili 80% npr. */
+    margin-left: auto;
+    margin-right: auto;
+
+}
+body.l-home a.l-home,
+body.l-linkovi a.l-linkovi,
+body.l-kontakt a.l-kontakt,
+body.l-novosti a.l-novosti,
+body.l-mogucnosti a.l-mogucnosti,
+#meni ul li {
+    background: #5F5F61;
+}
+#head {
+    background: lightblue;
+    font-family: 'Merriweather', serif;
+    font-size: 70pt;
+    text-align: center;
+}
+#meni ul, #meni ul li {
+    display: block;
+    text-align: center;
+    /* background: inherit; */
+    padding: 0;
+    margin: 0;
+}
+#meni {
+    background: rgb(68, 67, 63);
+    width: 100%;
+}
+.clr {
+    padding: 0;
+    margin: 0;
+    clear: both;
+}
+#meni ul li:hover {
+    background: #828284;
+}
+#footer {
+    margin-top: 20px;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    background: #1B1B1B;
+    color: white;
+}
+#meni ul li a {
+    text-decoration: none;
+    width: 100%;
+    border-radius: 40px 0 40px 0;
+    display: block;
+    padding: 10px 0 10px 0;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+#meni ul {
+    overflow: hidden;
+    width: 100%
+}
+#meni ul li {
+    background: rgb(68, 67, 63);
+    border-radius: 40px 0 40px 0;
+    height: 39px;
+    float: left;
+    width: 140px;
+    margin: 0;
+    padding: 0;
+}
+
+#footer {
+    clear: both;
+}
+.novost {
+    background: #ACACAC;
+    border: 1px solid #EDEDED;
+    border-radius: 10px 10px 15px 15px;
+    clear: both;
+    margin: 8px;
+    position: relative;
+}
+.novost .h {
+    padding: 5px;
+    border-radius: 8px 8px 2px 2px;
+    background: #404040;
+    color: white;
+
+}
+#cont {
+    min-height: 380px;
+}
+#novosti {
+    overflow: auto;
+    height: 380px;
+}
+.novost .lnk a:active, .novost .lnk a{
+    color: blue;
+}
+.novost .lnk a:visited {
+    color: darkmagenta;
+}
+.novost .lnk a:hover{
+    text-decoration: underline;
+}
+.novost .lnk a {
+    text-decoration: none;
+}
+.novost .lnk {
+    text-align: left;
+    margin: 5px 0 5px 10px;
+}
+.novost .h .autor {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+/*
+NE ZNAM kako da napravim da bez <img> taga u HTML-u
+dobijem da neke novosti imaju sliku, neke nemaju
+a ove što imaju, da im slike budu RAZLIČITE, a uz sve to
+da bude MODULARNO i jako SKALABILNO.
+Moglo se preko ID-a, ali je problem što ID ima VEĆI
+prioriter od CLASS, pa onda ako u ID stavim
+background: url ('...');
+ovo mi poništi npr.
+background-repeat: no-repeat;
+koji je u CLASS-u (jer ID ima veći prioriter od CLASS)
+---
+Za sada sam uradio preko CSS-a sa OOP stilom, odnosno
+višestrukim klasama, pa div koji ima sliku treba
+je aktivirati sa 'slika-aktivna' i staviti i neko unikatno ime
+isto u CLASS.
+Ako se stavi samo
+class="neki_unikat slika-novost" tada SLIKA neće biti aktivna
+potrebno je dodati i slika-aktivna da bi bila vidljiva, npr.
+class="neki_unikat slika-novost slika-aktivna"
+*/
+div.a-novost-0 {
+    background: url("http://etf.ba/etfFresh/img/logo.png");
+}
+div.a-novost-2 {
+    background: url("https://zamger.etf.unsa.ba/images/etf-50x50.png");
+}
+div.a-novost-1 {
+    background: url("http://etf.ba/etfFresh/img/logo.png");
+}
+div.slika-aktivna {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+div.slika-novost {
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: center;
+    float: left;
+}
+.novost ul li {
+    margin: 0 0 0 35px;
+}
+.novost .h .datum {
+    color: #FFFF00;
+}
+.novost .h .autor, .novost .h .datum {
+    float: right;
+    margin-left: 10px;
+    font-size: small;
+}
+.novost .data {
+    padding: 5px;
+
+    max-height: 100px;
+    overflow: hidden;
+    display: block;
+    margin-left: 5px;
+    text-overflow: ellipsis;
+}
+#lnks {
+    margin: 10px;
+    list-style: none;
+    list-style-image: url("IMG/list-dot.svg");
+
+}
+#lnks ul li {
+    margin-left: 40px;
+    color: lime;
+    margin-top: 2px;
+    font-size: 18px;
+}
+.novost a:hover, .novost a:active{
+    color: blue;
+}
+.novost a:visited{
+    color: darkmagenta;
+}
+#lnks ul li span{
+    color: white;
+}
+.novost .data:first-letter {
+    font-size: 20pt;
+    font-weight: bold;
+}
+#content {
+    min-height: 380px;
+    margin: 8px;
+}
+#content h1, #content h3 {
+    color: white;
+}
+#content h1 {
+    text-align: center;
+}
+#content > * {
+    margin: 10px;
+}
+#content ul li {
+    margin-left: 20px;
+}
+#content code {
+    color: lightskyblue;
+}
+#knkt {
+    min-height: 380px;
+}
+#knkt h1 {
+    color: white;
+}
+.mrgn > * {
+    margin: 10px;
+}
+.mrgn {
+    margin: 10px;
+    min-height: 380px;
+}
+#m-tabela, #m-tabela td, #m-tabela th {
+
+    padding: 3px 5px 3px 15px;
+    border-collapse: collapse;
+    color: #ECECF3;
+}
+#m-tabela tr:nth-child(even) {
+    background: #464646;
+}
+#m-tabela tr:nth-child(odd) {
+    background: #292929;
+}
+#m-tabela tr {
+    height: 50px;
+}
+#m-tabela .jezik {
+    font-weight: bold;
+    text-align: center;
+    color: lime;
+}
+#m-tabela th {
+    background: #ceced7;
+    color: black;
+    height: 30px;
+   /* font-size: larger; */
+}
+.pnl-mogucnost h2 {
+    color: white;
+}
+#m-tabela {
+    margin-left: auto;
+    margin-right: auto;
+}
+#m-tabela tr:nth-child(odd):hover {
+    background: #383838;
+}
+#m-tabela tr:nth-child(even):hover {
+    background: #555555;
+}
+#forma div#lijevo {
+    float: left;
+    font-weight: bold;
+    color: white;
+    padding-left: 10px;
+    width: 30%;
+}
+#forma {
+    border-radius: 3px;
+    background: #2C2C2C;
+    width: 70%;
+    overflow: auto;
+    height: 340px;
+}
+#forma div#desno {
+    float: left;
+    width: 65%;
+
+}
+#forma .span-req {
+    font-weight: lighter;
+    color: yellow;
+    font-size: smaller;
+}
+#komentar {
+    width: 95%;
+    min-height: 150px;
+}
+#forma div p {
+    margin-top: 15px;
+}
+.desno-cont {
+    margin-top: 10px;
+}
+#lijevo-dugmad {
+    margin-right: 5%;
+    margin-top: 20px;
+    text-align: right;
+}
+#forma * {
+    font-size: 16px;
+}
+#forma div div .input-el {
+    font-size: 20px;
+    width: 250px;
+}
+#forma .dugme {
+    width: 110px;
+}
+#knkt h1 abbr {
+    font-size: 20px;
+    font-weight: 100;
+}

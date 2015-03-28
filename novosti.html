@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+    <title>Novosti | WT Learn</title>
+</head>
+<body class="l-novosti">
+<div id="frame">
+    <div id="head">
+        WT Learn
+    </div>
+    <div id="meni">
+        <ul>
+            <li><a class="l-home" href="index.html">Naslovnica</a></li>
+            <li><a class="l-novosti" href="novosti.html">Novosti</a></li>
+            <li><a class="l-mogucnosti" href="mogucnosti.html">Mogućnosti</a></li>
+            <li><a class="l-linkovi" href="linkovi.html">Linkovi</a></li>
+            <li><a class="l-kontakt" href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <div class="clr">
+        </div>
+    </div>
+    <div id="cont">
+        <div id="novosti">
+
+            <div class="novost">
+                <h3 class="h">
+                    Finalna novost (sa slikom) - neki ChangeLog
+                    <span class="autor">Enil Pajic</span>
+                    <span class="datum">23.03.2015 10:02:34</span>
+                </h3>
+                <div class="a-novost-0 slika-novost slika-aktivna"></div>
+                <div class="data">
+                    Stranica je urađena koliko-toliko. Ova 'novost' ima i sliku. Potrebno je još:
+                    <ul>
+                        <li>Dodati sliku (logo)</li>
+                        <li>[Možda] Dodati pozadinsku sliku</li>
+                        <li>Ova obavijest je ograničene 'visine'... Ako ima više teksta, završava se sa tri tačke (elipsis)</li>
+                    </ul>
+                </div>
+                <div class="clr"></div>
+                <div class="lnk">
+                    <a href="#">Više detalja</a>
+                </div>
+            </div>
+            <div class="novost">
+                <h3 class="h">
+                    Novost (bez slike)
+                    <span class="autor">Enil Pajic</span>
+                    <span class="datum">23.03.2015 09:11:02</span>
+                </h3>
+                <div class="a-novost-1 slika-novost"></div>
+                <div class="data">
+                    Problem je što se ne može koristiti <code>&lt;IMG&gt;</code> tag, pa sam morao eksperimentisati sa <code>DIV</code>-ovima.<br>
+                    Koristi se 'objektno orijentisani CSS' za ovo, odnosno višestruke klase (<code>class</code>). Tag <code>DIV</code> koji
+                    ima klasu <code>slika-novost</code> ima opcije za sliku. Ukoliko se doda i neki unikatni naziv, tada se tome <code>DIV</code>-u
+                    može dodijeliti i slika (jer <code>class</code> ima <b>manji</b> prioritet od <code>ID</code>-a). Da bi slika bila <b>vidljiva</b>
+                    potrebno je dodati u <code>class</code> dodati i <code>slika-aktivna</code>.
+
+
+                </div>
+                <div class="clr"></div>
+                <div class="lnk">
+                    <a href="#">Više detalja</a>
+                </div>
+            </div>
+            <div class="novost">
+                <h3 class="h">
+                    Novost (sa slikom) - Kontakt forma
+                    <span class="autor">Enil Pajic</span>
+                    <span class="datum">23.03.2015 09:03:57</span>
+                </h3>
+                <div class="a-novost-2 slika-novost slika-aktivna"></div>
+                <div class="data">
+                    Kontakt forma (<a href="kontakt.html" target="_blank">link</a>) sadrži <b>tri</b> <code>HTML5</code>
+                    kontrole i to:
+                    <ul>
+                        <li>email</li>
+                        <li>url</li>
+                        <li>autofocus (za prvi textbox)</li>
+                    </ul>
+                    Napravio sam i malu <code><b>PHP</b></code> skriptu da samo ispiše šta je proslijeđeno.
+                </div>
+                <div class="clr"></div>
+                <div class="lnk">
+                    <a href="#">Više detalja</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        WT Learn - sistem za interaktivno učenje WT-a <br>
+        Copyright &copy; 2015 by Enil Pajić
+    </div>
+</div>
+
+</body>
+</html>

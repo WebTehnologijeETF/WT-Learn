@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="main.css">
         <meta charset="UTF-8">
         <title>Kontakt | WT Learn</title>
+        <script src="kontakt_validacija.js"></script>
     </head>
     <body class="l-kontakt">
     <div id="frame">
@@ -16,6 +17,14 @@
                 <li><a class="l-novosti" href="novosti.html">Novosti</a></li>
                 <li><a class="l-mogucnosti" href="mogucnosti.html">Mogućnosti</a></li>
                 <li><a class="l-linkovi" href="linkovi.html">Linkovi</a></li>
+                <li>
+                    <a class="l-jezici no-pointer" href="#" onclick="return false;">Jezici</a>
+                    <ul>
+                        <li><a class="l-html" href="html_page.html">HTML</a></li>
+                        <li><a class="l-css" href="css.html">CSS</a></li>
+                        <li><a class="l-js" href="js.html">JavaScript</a></li>
+                    </ul>
+                </li>
                 <li><a class="l-kontakt" href="kontakt.html">Kontakt</a></li>
             </ul>
             <div class="clr">
@@ -27,25 +36,50 @@
                 <abbr title="3 HTML5 komponente su: 'email', 'url' i 'autofocus' za prvi textbox... rade u svim popularnim browserima.">
                     (Info)</abbr>
             </h1>
-            <form id="forma" method="post" action="kontakt.php">
+            <form id="forma" method="post" action="kontakt.php" novalidate onsubmit="return ValidirajFormu(this);">
                 <div id="lijevo">
                     <p>Ime <span class="span-req">*</span></p>
                     <p>E-mail <span class="span-req">*</span></p>
+                    <p>Potvrda E-maila <span class="span-req">*</span></p>
                     <p>URL vaše web stranice</p>
                     <p>Komentar <span class="span-req">*</span></p>
+                    <br>
+                    <div id="invalid-comment" class="inline-div w-pointer invisible" onclick="alert(this.title)">
+                        <div class="inline-div trougao"></div>
+                        <p id="comment-nop" class="inline-div">Komentar ne može biti prazan!</p>
+                    </div>
                 </div>
                 <div id="desno">
                     <div class="desno-cont">
-                        <input type="text" name="ime" autofocus required class="input-el">
+                        <input type="text" name="ime" autofocus required class="input-el" oninvalid="this.setCustomValidity('')">
+                        <div id="invalid-ime" class="inline-div w-pointer invisible" onclick="alert(this.title)">
+                            <div class="inline-div trougao"></div>
+                            <p class="inline-div">Ime nije ispravno</p>
+                        </div>
                     </div>
                     <div class="desno-cont">
-                        <input type="email" name="email" required class="input-el">
+                        <input type="email" name="email" required class="input-el" oninvalid="this.setCustomValidity('')">
+                        <div id="invalid-email" class="inline-div w-pointer invisible" onclick="alert(this.title)" title="EMail nije ispravan!">
+                            <div class="inline-div trougao" title=""></div>
+                            <p class="inline-div">E-mail nije ispravan!</p>
+                        </div>
                     </div>
                     <div class="desno-cont">
-                        <input type="url" name="url" class="input-el">
+                        <input type="email" name="email_potvrda" required class="input-el" oninvalid="this.setCustomValidity('')">
+                        <div id="invalid-email-p" class="inline-div w-pointer invisible" onclick="alert(this.title)">
+                            <div class="inline-div trougao"></div>
+                            <p class="inline-div">Mailovi nisu isti!</p>
+                        </div>
                     </div>
                     <div class="desno-cont">
-                        <textarea name="comment" id="komentar"></textarea>
+                        <input type="url" name="url" class="input-el" oninvalid="this.setCustomValidity('URL nije validan! Molimo unesite ispravan URL')">
+                        <div id="invalid-url" class="inline-div w-pointer invisible" onclick="alert(this.title)">
+                            <div class="inline-div trougao"></div>
+                            <p class="inline-div">URL nije ispravan!</p>
+                        </div>
+                    </div>
+                    <div class="desno-cont">
+                        <textarea name="comment" id="komentar" required oninvalid="this.setCustomValidity('Polje Komentar je OBAVEZNO!')"></textarea>
                     </div>
                     <div id="lijevo-dugmad">
                         <input type="reset" value="Očisti sve" class="dugme">

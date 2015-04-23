@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>AJAX Validacija | WT Learn</title>
+</head>
+<body class="l-validacija">
+<div id="frame">
+    <div id="validacija-a">
+        <h2>
+            Validacija putem <i>AJAX</i>-a
+        </h2>
+        <br>
+        <table id="ajax-v">
+            <tr>
+                <td>
+                    <p class="inline-p">Naziv predmeta</p>
+                </td>
+                <td>
+                    <input type="text" id="naziv-txt" class="input-el">
+                </td>
+                <td>
+                    <div id="inv-naziv" class="inline-div w-pointer invisible" onclick="alert(this.title)">
+                        <div class="inline-div trougao"></div>
+                        <p class="inline-div">Nepostojeći predmet!</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="inline-p">Šifra predmeta</p>
+                </td>
+                <td>
+                    <input type="text" id="sifra-txt" class="input-el">
+                </td>
+                <td>
+                    <div id="inv-sifra" class="inline-div w-pointer invisible" onclick="alert(this.title)">
+                        <div class="inline-div trougao"></div>
+                        <p class="inline-div">Nepostojeća šifra!</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td id="desno">
+                    <input type="button" value="Provjeri" onclick="AjaxValidiraj()">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div id="ajax-OK" class="inline-div w-pointer invisible" onclick="alert(this.title)">
+                        <div class="inline-div trougao-OK"></div>
+                        <p class="inline-div aj-ok">Uneseni podaci su ispravni!</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -13,23 +13,30 @@
         <div id="meni">
             <ul>
                 <li><a class="l-home" href="index.html">Naslovnica</a></li>
-                <li><a class="l-novosti" href="novosti.html">Novosti</a></li>
-                <li><a class="l-mogucnosti" href="mogucnosti.html">Mogućnosti</a></li>
-                <li><a class="l-linkovi" href="linkovi.html">Linkovi</a></li>
+                <li><a class="l-novosti" href="#" onclick="AjaxLoad('novosti.html');">Novosti</a></li>
+                <li><a class="l-linkovi" href="#" onclick="AjaxLoad('Linkovi.html');">Linkovi</a></li>
                 <li>
                     <a class="l-jezici no-pointer" href="#" onclick="return false;">Jezici</a>
                     <ul>
-                        <li><a class="l-html" href="html_page.html">HTML</a></li>
-                        <li><a class="l-css" href="css.html">CSS</a></li>
-                        <li><a class="l-js" href="js.html">JavaScript</a></li>
+                        <li><a class="l-html" href="#" onclick="AjaxLoad('html_page.html');">HTML</a></li>
+                        <li><a class="l-css" href="#" onclick="AjaxLoad('css.html');">CSS</a></li>
+                        <li><a class="l-js" href="#" onclick="AjaxLoad('js.html');">JavaScript</a></li>
                     </ul>
                 </li>
-                <li><a class="l-kontakt" href="kontakt.html">Kontakt</a></li>
+                <li>
+                    <a class="l-projekat no-pointer" href="#" onclick="return false;">Projekat</a>
+                    <ul>
+                        <li><a class="l-validacija" href="#" onclick="AjaxLoad('ajax_validacija.html');">Validacija</a></li>
+                        <li><a class="l-ajax" href="#" onclick="AjaxLoad('ajax_tabela.html');">Ajax Tabela</a></li>
+                        <li><a class="l-tabela" href="#" onclick="AjaxLoad('mogucnosti.html');">Tabela (spirala 1)</a></li>
+                    </ul>
+                </li>
+                <li><a class="l-kontakt" href="#" onclick="AjaxLoad('kontakt.html');">Kontakt</a></li>
             </ul>
             <div class="clr">
             </div>
         </div>
-        <div id="content">
+        <div id="main-cont" class="econtent">
             <h1>WT Learn</h1>
             <h3>Uvod</h3>
             <p><b><i>WT Learn</i></b> je sistem za interaktivno učenje  <i>Web Tehnologija</i>
@@ -67,6 +74,8 @@
             Copyright &copy; 2015 by Enil Pajić
         </div>
     </div>
-
+    <script src="SPA.js"></script>
+    <script src="general.js"></script>
+    <script src="kontakt_validacija.js"></script>
     </body>
 </html>

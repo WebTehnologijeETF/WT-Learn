@@ -10,23 +10,24 @@ html {
     background-color: #FFFFFF;
 }
 a, a:active {
-    color:lime;
+    color:yellow;
+    text-decoration: none;
 }
 a:hover {
-    font-weight: bolder;
+    text-decoration: underline;
 }
+
 .no-pointer {
     cursor: default;
 }
 a:visited {
-    color: limegreen;
+    color: lightgreen;
 }
-#frame {
+#main-cont, #frame {
     background: #5F5F61; /* #707070; */
     width: 1024px; /* ili 80% npr. */
     margin-left: auto;
     margin-right: auto;
-
 }
 body.l-home a.l-home,
 body.l-linkovi a.l-linkovi,
@@ -273,23 +274,23 @@ div.slika-novost {
     font-size: 20pt;
     font-weight: bold;
 }
-#content {
+.econtent {
     min-height: 380px;
     margin: 8px;
 }
-#content h1, #content h3 {
+.econtent h1, .econtent h3 {
     color: white;
 }
-#content h1 {
+.econtent h1 {
     text-align: center;
 }
-#content > * {
+.econtent > * {
     margin: 10px;
 }
-#content ul li {
+.econtent ul li {
     margin-left: 20px;
 }
-#content code {
+element.content code {
     color: lightskyblue;
 }
 #knkt {
@@ -407,10 +408,23 @@ div.slika-novost {
     border-top: 6px solid transparent;
     border-left:  12px solid #FF0000;
 }
+.trougao-OK {
+    width: 0;
+    height: 0;
+    border-bottom: 12px solid #00FF00;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
 p.inline-div {
     display: inline;
     color: red;
     font-size: smaller;
+}
+.inline-p {
+    display: inline;
+}
+.inline-b {
+    display: inline-block;
 }
 #comment-nop {
     font-weight: normal;
@@ -420,4 +434,23 @@ p.inline-div {
 }
 .invisible {
     visibility: collapse;
+}
+#validacija-a p {
+    font-size: 16px;
+    color: white;
+}
+#validacija-a input {
+    font-size: 16px;
+}
+#validacija-a{
+    margin-left: 25px;
+}
+#validacija-a .aj-ok {
+    color: lime;
+}
+#ajax-v td {
+    padding: 2px 5px 0 2px;
+}
+#ajax-v td#desno {
+    text-align: right;
 }

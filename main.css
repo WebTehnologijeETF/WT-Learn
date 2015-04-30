@@ -38,6 +38,10 @@ body.l-jezici a.l-css,
 body.l-jezici a.l-jezici,
 body.l-jezici a.l-html,
 body.l-jezici a.l-js,
+body.l-projekat a.l-validacija,
+body.l-projekat a.l-ajax,
+body.l-projekat a.l-tabela,
+body.l-projekat a.l-projekat,
 #meni ul li {
     background: #5F5F61;
 }
@@ -453,4 +457,170 @@ p.inline-div {
 }
 #ajax-v td#desno {
     text-align: right;
+}
+#ajax-tabela, #ajax-tabela tr, #ajax-tabela td {
+    border-collapse: collapse;
+    border: 2px solid black;
+    padding: 2px 3px 2px 5px;
+
+}
+#ajax-tabela, #ajax-tabela td, #ajax-tabela th {
+
+    padding: 3px;
+    border-collapse: collapse;
+    color: #ECECF3;
+}
+#ajax-tabela tr:nth-child(even) {
+    background: #464646;
+}
+#ajax-tabela tr:nth-child(odd) {
+    background: #292929;
+}
+
+.slika-edit {
+    border: dashed transparent 2px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+}
+.slika-edit:hover {
+    background: #B9B9B9;
+}
+#ajax-tabela {
+    margin-left: auto;
+    margin-right: auto;
+}
+#ajax-tabela tr:nth-child(odd):hover {
+    background: #383838;
+}
+#ajax-tabela tr:nth-child(even):hover {
+    background: #555555;
+}
+#ajax-tabela td.ajax-opis {
+    width: 250px;
+    white-space: pre;
+}
+#ajax-tabela td.ajax-naziv {
+    width: 150px;
+}
+#ajax-tabela td.ajax-table-slika {
+    background: white;
+}
+
+#popup-t {
+    height: 24px;
+    background: #0F0F0F;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+    cursor: default;
+}
+.x-dugme:before {
+    color: rgba(255, 255, 255, 0.9);
+    content: "×";
+    font-size: 24px;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+}
+#popup-b {
+    background-color: rgba(0, 0, 0, 0.57);
+    bottom: 0;
+    cursor: default;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    z-index: 1;
+    transition: opacity .5s;
+}
+#popup-b:target {
+    visibility: visible;
+    opacity: 1;
+}
+#popup-t a {
+    text-decoration: none;
+}
+.popup-c {
+    width: 400px;
+    height: 400px;
+    background-color: #D1D1D1;
+    border: 3px solid #080808;
+    display: inline-block;
+    left: 50%;
+    top: 40%;
+    opacity: 0;
+    padding: 3px;
+    position: fixed;
+    text-align: justify;
+    visibility: hidden;
+    z-index: 17;
+    transform: translate(-50%, -50%);
+    border-radius: 7px;
+    transition: opacity 0.5s, top 0.5s;
+}
+.popup-c .popup-cont {
+    padding: 25px 7px 7px 7px;
+    overflow: auto;
+}
+.x-dugme {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    right: -15px;
+    text-align: center;
+    text-decoration: none;
+    top: -20px;
+    width: 30px;
+    border-radius: 15px;
+}
+.x-dugme:hover {
+    background: rgba(0, 142, 0, 0.77);
+}
+#popup-b:target + .popup-c {
+    top: 50%;
+    opacity: 1;
+    visibility: visible;
+}
+#ajx-tabela, #ajx-tabela td {
+    border-collapse: collapse;
+    padding: 2px 3px 2px 5px;
+}
+.iel {
+    padding-left: 5px;
+    font-size: 16px;
+    width: 300px;
+    height: 24px;
+}
+#ajx-prvi {
+    font-weight: bold;
+}
+#ajx-zadnji {
+    text-align: right;
+}
+#opis-txt {
+    resize: none;
+    width: 300px;
+    padding: 3px;
+}
+
+#OKBtn {
+    width: 100px;
+    font-weight: bold;
+    height: 35px;
+    font-family: 'Tahoma', 'Verdana', serif;
+}
+#trhr {
+    margin: 15px 0 5px 0;
+    color: #8E8E8E;
+}
+#ajax-prvi td{
+    font-weight: bold;
+    background: white;
+    height: 30px;
+    color: black;
 }

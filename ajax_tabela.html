@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>Ajax tabela | WT Learn</title>
+</head>
+<body class="l-projekat">
+<div id="frame">
+    <a id="popup-b" href="#"></a>
+    <div class="popup-c">
+        <div id="popup-t">
+            <div class="inline-div" id="popup-n">Izmijenite proizvod</div>
+            <a href="#" class="x-dugme" title="Zatvori prozor"></a>
+        </div>
+        <div class="popup-cont">
+            <table id="ajx-tabela">
+                <tr>
+                    <td id="ajx-prvi">Akcija</td>
+                    <td>
+                        <select id="select-akcija" class="iel">
+                            <option value="dodavanje">Dodavanje novog proizvoda</option>
+                            <option value="promjena">Izmjena selektiranog proizvoda</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td colspan="2">&nbsp;</td></tr>
+                <tr>
+                    <td>Naziv</td>
+                    <td>
+                        <input type="text" class="iel" id="izmjena-txt">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cijena</td>
+                    <td>
+                        <input type="number" step="any" class="iel" min="0" value="0" id="cijena-txt">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Količina</td>
+                    <td>
+                        <input type="number" step="any" class="iel" min="0" value="0" id="kolicina-txt">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Opis</td>
+                    <td>
+                        <textarea id="opis-txt" cols="30" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr><td colspan="2"><hr id="trhr"></td></tr>
+                <tr>
+                    <td colspan="2" id="ajx-zadnji">
+                        <input type="button" value="OK" id="OKBtn" onclick="Akcija()">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div id="Data">
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+29.04.2015. 11:31:44
+Vedran Ljubović
+NOVOST2
+https://zamger.etf.unsa.ba/images/16x16/zad_ok.png
+osnovni treeeext
+Ovaj osnovni tekst se nalazi u više redova.
+Lorem ipsum dolor sit amet i tako dalje mrsko mi je da kopiram.
+--
+DETALJI :POvdje sada slijedi detaljniji tekst novosti. 
+Lorem ipsum dolor sit amet i tako dalje mrsko mi je da kopiram.
+Lorem ipsum dolor sit amet i tako dalje mrsko mi je da kopiram.

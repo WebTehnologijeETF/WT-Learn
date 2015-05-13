@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <meta charset = "UTF-8">
+    <title>WT-Editor</title>
+    <link rel="stylesheet" href="editor.css">
+    <script src="editor.js"></script>
+</head>
+<body>
+<div id="head">
+    WT-EDIT &dashv; Editor
+</div>
+<div id="top"></div>
+<div id="main">
+    <form id="forma-snimi" class="skrivena" action="editor.php" method="post">
+        <input type="hidden" name="snimi" value="da">
+        <input type="hidden" name="html">
+        <input type="hidden" name="css">
+        <input type="hidden" name="js">
+    </form>
+    <form id="forma-ucitaj" class="skrivena" action="upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" id="zfile" name="zip_file">
+    </form>
+    <div class="tabovi">
+        <ul id="ul-tabovi">
+            <li class="aktivan"><a href="#" onclick="return Navigiraj('etab', 1);">HTML</a></li>
+            <li><a href="#" onclick="return Navigiraj('etab', 2);">CSS</a></li>
+            <li><a href="#" onclick="return Navigiraj('etab', 3);">JavaScript</a></li>
+        </ul>
+        <div class="desno">
+            <a class="dugme" onclick="return Submituj();" href="#">Snimi</a>
+            <a class="dugme" onclick="return Ucitaj();" href="#">Učitaj</a>
+        </div>
+        <div class="etab" id="etab">
+            <div class="odvoji" id="thtml">
+                <div class="nnot">
+     <!--               <div class="dugme ex" onclick="Validiraj (window.html);">
+                        Validiraj
+                        <div class="inline">
+                            <a class="dropdown" onclick="alert('bla');" href="#">&#9660;</a>
+                            <ul class="no-list">
+                                <li><a href="#">Remoras</a></li>
+                                <li><a href="#">Tilefishes</a></li>
+                                <li><a href="#">Bluefishes</a></li>
+                                <li><a href="#">Tigerfishes</a></li>
+                            </ul>
+                        </div>
+                    </div>-->
+                </div>
+                <div id="html" class="ace-tab">
+                </div>
+            </div>
+
+            <div class="odvoji" id="tcss">
+                <div class="nnot">css komande</div>
+                <div id="css" class="ace-tab">
+                </div>
+            </div>
+
+            <div class="odvoji" id="tjs">
+                <div class="nnot">js komande</div>
+                <div id="js" class="ace-tab">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class='footer'>Copyright &copy; 2014 -
+        <script>
+            document.write(new Date().getFullYear());
+        </script>
+    </div>
+</div>
+<script src="ACE/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var html = ace.edit("html");
+    var css = ace.edit("css");
+    var js = ace.edit("js");
+    html.setTheme("ace/theme/monokai");
+    html.getSession().setMode("ace/mode/html");
+    css.setTheme("ace/theme/terminal");
+    css.getSession().setMode("ace/mode/css");
+    js.setTheme("ace/theme/xcode");
+    js.getSession().setMode("ace/mode/javascript");
+</script>
+</body>
+</html>

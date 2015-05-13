@@ -167,10 +167,17 @@ body.l-projekat a.l-projekat,
 }
 #cont {
     min-height: 380px;
+    /*position: relative;*/
+    /*overflow: auto;*/
+
 }
 #novosti {
     overflow: auto;
     height: 380px;
+}
+#novosti.no-scroll {
+    /*overflow: inherit;*/
+    /*position: relative;*/
 }
 .novost .lnk a:active, .novost .lnk a{
     color: blue;
@@ -192,42 +199,15 @@ body.l-projekat a.l-projekat,
     color: #FFFFFF;
     font-weight: bold;
 }
-/*
-NE ZNAM kako da napravim da bez <img> taga u HTML-u
-dobijem da neke novosti imaju sliku, neke nemaju
-a ove što imaju, da im slike budu RAZLIČITE, a uz sve to
-da bude MODULARNO i jako SKALABILNO.
-Moglo se preko ID-a, ali je problem što ID ima VEĆI
-prioriter od CLASS, pa onda ako u ID stavim
-background: url ('...');
-ovo mi poništi npr.
-background-repeat: no-repeat;
-koji je u CLASS-u (jer ID ima veći prioriter od CLASS)
----
-Za sada sam uradio preko CSS-a sa OOP stilom, odnosno
-višestrukim klasama, pa div koji ima sliku treba
-je aktivirati sa 'slika-aktivna' i staviti i neko unikatno ime
-isto u CLASS.
-Ako se stavi samo
-class="neki_unikat slika-novost" tada SLIKA neće biti aktivna
-potrebno je dodati i slika-aktivna da bi bila vidljiva, npr.
-class="neki_unikat slika-novost slika-aktivna"
-*/
-div.a-novost-0 {
-    background: url("http://etf.ba/etfFresh/img/logo.png");
-}
-div.a-novost-2 {
-    background: url("https://zamger.etf.unsa.ba/images/etf-50x50.png");
-}
-div.a-novost-1 {
-    background: url("http://etf.ba/etfFresh/img/logo.png");
-}
-div.slika-aktivna {
+img.slika-aktivna {
     width: 100px;
     height: 100px;
     margin: 10px;
 }
-div.slika-novost {
+img.slika-neaktivna {
+    display: none;
+}
+img.slika-novost {
     background-repeat: no-repeat;
     background-size: 100px;
     background-position: center;
@@ -244,14 +224,45 @@ div.slika-novost {
     margin-left: 10px;
     font-size: small;
 }
+.novost-div {
+    text-align: right;
+}
+.pdn {
+    padding: 5px;
+}
+.novost-h1 {
+    margin-bottom: 20px;
+}
+.novost-pd, .novost-pa {
+    text-align: right;
+    display: inline-block;
+    font-size: small;
+}
+.novost-data.pdn {
+    margin: 10px 15px 10px 15px;
+    background: #909092;
+    min-height: 200px;
+    word-wrap: break-word;
+    overflow: hidden;
+    border-radius: 7px 7px 7px 7px;
+    border: 1px solid #c4c4c6;
+
+}
+.lnk.invisible {
+    display: none;
+}
 .novost .data {
     padding: 5px;
-
+    white-space: pre-line;
     max-height: 100px;
     overflow: hidden;
     display: block;
     margin-left: 5px;
     text-overflow: ellipsis;
+}
+.novost-data {
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 #lnks {
     margin: 10px;
@@ -294,7 +305,7 @@ div.slika-novost {
 .econtent ul li {
     margin-left: 20px;
 }
-element.content code {
+.element.content code {
     color: lightskyblue;
 }
 #knkt {

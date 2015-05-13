@@ -1,0 +1,124 @@
+.tabovi ul {
+    list-style: none;
+    padding: 0 0 0 10px;
+    margin: 0;
+
+}
+.tabovi ul:not(.opcije) li {
+    float: left;
+    background: #252525;
+    /*border: 1px #aaa solid;*/
+    border-bottom: none;
+    margin-right: 10px;
+    border-radius: 5px 15px 0 0;
+    height: 30px;
+
+}
+.tabovi ul li:not(.aktivan) a:hover  {
+    background: grey;
+}
+.desno {
+    text-align: right;
+}
+.tabovi ul:not(.opcije) li a {
+    min-width: 80px;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 5px 15px 0 0;
+    font-weight: bold;
+}
+.tabovi ul li.aktivan {
+    /*margin-bottom: -1px;*/
+    /*padding-bottom: 6px;*/
+    background: black;
+}
+.skrivena {
+    display: none;
+    visibility: collapse;
+}
+.dugme {
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px #666666;
+    font-family: Georgia, serif;
+    color: #000000;
+    font-size: 17px;
+    height: 16px;
+    background: #d6d6d6;
+    padding: 5px 20px 5px 20px;
+    border: solid #929294 2px;
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dugme:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+}
+.dugme:active {
+    background: #205b81;
+}
+.etab {
+    clear: both;
+    border: 1px solid #aaa;
+    height: 450px;
+    overflow: hidden;
+    background: #595959;
+}
+.footer {
+    text-align: center;
+    font-size: 15px;
+    margin: 5px;
+}
+.inslie {
+    display: inline-block;
+}
+.dropdown {
+    display: inline-block;
+
+}
+.dugme.ex {
+
+}
+.etab .ace-tab {
+    height: 450px;
+    /*padding: 10px;*/
+}
+.etab div.nnot {
+    height: 50px;
+    margin-bottom: 10px;
+    background: grey;
+}
+#main {
+    /*background: red;*/
+    margin-top: 20px;
+}
+#head {background: blue;}
+.clr {
+    height: 200px;
+    width: 100px;
+    background: yellow;
+}
+.ace-tab {
+    font-size: 14px;
+}
+#head {
+    height: 60px;
+    /*padding: 2px;*/
+    /*margin: 0;*/
+    font-size: 32px;
+}
+/*.odvoji + div {*/
+    /*height: 50px;*/
+    /*background: green;*/
+/*}*/

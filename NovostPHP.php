@@ -81,4 +81,69 @@ class NovostPHP {
         return $b->DatumUNIX() - $a->DatumUNIX();
     }
 
-} 
+}
+class NovostSQL {
+    private $datum, $naslov, $autor, $kratki = "", $dugi = "", $slika, $id;
+    function __construct (array $s, $novostid = "")
+    {
+        $this->datum = $s['DATUM'];
+        $this->autor = $s['AUTOR'];
+        $this->id = $s['ID'];
+        $this->naslov = $s['NASLOV'];# $this->naslov = strtolower($this->naslov);
+        $this->slika = $s['SLIKA'];
+        $this->kratki = $s['K_TEXT'];
+        $this->dugi = $s['D_TEXT'];
+    }
+    function  ID ()
+    {
+        return trim (intval($this->id));
+    }
+    function Autor ()
+    {
+        return rtrim ($this->autor);
+    }
+    function DatumString()
+    {
+        return date("d.m.Y. (h:i)", $this->datum);
+    }
+    function DatumUNIX()
+    {
+        return $this->datum;
+    }
+    function LinkSlike()
+    {
+        return rtrim($this->slika);
+    }
+    function ImaSlika ()
+    {
+        return trim($this->LinkSlike()) !== "";
+    }
+    function Naslov ()
+    {
+        return rtrim($this->naslov);
+    }
+    function NaslovOriginal ()
+    {
+        return strtoupper($this->Naslov());
+    }
+    function KratkiTekst ()
+    {
+        return trim ($this->kratki);
+    }
+    function DetaljnijiTekst ()
+    {
+        return trim($this->dugi);
+    }
+    function ImaDetaljnijegTeksta ()
+    {
+        return trim ($this->DetaljnijiTekst()) !== "";
+    }
+    function UkupanTekst ()
+    {
+        return $this->KratkiTekst() . PHP_EOL . $this->DetaljnijiTekst();
+    }
+    static function KriterijSortiranjaUNIX (NovostPHP $a, NovostPHP $b)
+    {
+        return $b->DatumUNIX() - $a->DatumUNIX();
+    }
+}

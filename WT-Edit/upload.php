@@ -44,7 +44,7 @@ if($_FILES["zip_file"]["name"]) {
     } else {
         $message = "Problem sa uploadom!";
     }
-    $p = array ("status" => (!$message || !$okay) ? "0" : "1",
+    $p = array ("status" => !$okay ? "0" : "1",
         "message" => $message,
         "html" => $html,
         "js" => $js,

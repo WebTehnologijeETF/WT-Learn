@@ -73,7 +73,7 @@ function Ucitaj ()
         var AX = new XMLHttpRequest();
         AX.open ("POST", "upload.php", true);
 
-        AX.send (fd);
+       // AX.send (fd);
         AX.onreadystatechange = function ()
         {
             if (AX.readyState === 4 && AX.status === 200)
@@ -82,7 +82,7 @@ function Ucitaj ()
                 var p = JSON.parse (s);
                 if (p.status !== "1")
                 {
-                    alert ("Uploadovanje nije OK!");
+                    alert ("Uploadovanje nije OK!\n" + p.message);
                     return false;
                 }
                 window.html.getSession().setValue (p.html, 1);

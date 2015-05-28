@@ -16,6 +16,7 @@ if($_FILES["zip_file"]["name"]) {
         }
     }
 
+    #magic lib
     $continue = strtolower($name[1]) == 'zip' ? true : false;
     if(!$continue || !$okay) {
         $message = "Možete uploadovati samo .zip fajl!";

@@ -83,8 +83,8 @@ class NovostPHP {
 
 }
 class NovostSQL {
-    private $datum, $naslov, $autor, $kratki = "", $dugi = "", $slika, $id;
-    function __construct (array $s, $novostid = "")
+    private $datum, $naslov, $autor, $kratki = "", $dugi = "", $slika, $id, $komentarisanje, $brk;
+    function __construct (array $s, $broji_komentare = true)
     {
         $this->datum = $s['DATUM'];
         $this->autor = $s['AUTOR'];
@@ -93,6 +93,12 @@ class NovostSQL {
         $this->slika = $s['SLIKA'];
         $this->kratki = $s['K_TEXT'];
         $this->dugi = $s['D_TEXT'];
+        $this->komentarisanje = $s['KOMENTARISANJE'];
+        $this->brk = $broji_komentare ? $s['BROJ_K'] : 0;;
+    }
+    function BrojKomentara ()
+    {
+        return intval ($this->brk);
     }
     function  ID ()
     {
@@ -133,6 +139,10 @@ class NovostSQL {
     function DetaljnijiTekst ()
     {
         return trim($this->dugi);
+    }
+    function DozvoljenoKomentarisanje ()
+    {
+        return boolval($this->komentarisanje);
     }
     function ImaDetaljnijegTeksta ()
     {

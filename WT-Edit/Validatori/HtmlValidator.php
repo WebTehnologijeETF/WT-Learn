@@ -1,10 +1,16 @@
 <?php
 
-namespace W3C;
+#namespace W3C;
 
-use SimpleXMLElement;
-use Validatori\Validation\Result;
-use Validatori\Validation\Violation;
+#use SimpleXMLElement;
+#use Validation\Result;
+
+use W3C\Validation\Result;
+
+require ("Validation" . DIRECTORY_SEPARATOR . "Result.php");
+require ("Validation" . DIRECTORY_SEPARATOR . "Violation.php");
+#use Validatori\Validation\Result;
+#use Validatori\Validation\Violation;
 
 /**
  * Class which validates HTML with the W3C Validator API.
@@ -62,7 +68,7 @@ class HtmlValidator
      */
     protected function parseResponse($response)
     {
-        $xml = new SimpleXMLElement($response);
+        $xml = new \SimpleXMLElement($response);
         $ns = $xml->getNamespaces(true);
         $data = $xml->children($ns['env'])->children($ns['m'])->markupvalidationresponse;
 
@@ -92,7 +98,7 @@ class HtmlValidator
      */
     protected function getEntry(SimpleXMLElement $xml)
     {
-        $entry = new Violation();
+        $entry = new \W3C\Validation\Violation();
         $entry->setLine($xml->line)
             ->setColumn($xml->col)
             ->setMessage($xml->message)

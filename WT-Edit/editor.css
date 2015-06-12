@@ -103,7 +103,7 @@
     /*background: red;*/
     margin-top: 20px;
 }
-#head {background: blue;}
+#head {background: #5f5f5f;}
 .clr {
     height: 200px;
     width: 100px;
@@ -112,13 +112,109 @@
 .ace-tab {
     font-size: 14px;
 }
+.wbox {
+    color: white;
+}
 #head {
     height: 60px;
     /*padding: 2px;*/
     /*margin: 0;*/
     font-size: 32px;
 }
-/*.odvoji + div {*/
-    /*height: 50px;*/
-    /*background: green;*/
-/*}*/
+#popup-t {
+    height: 24px;
+    background: #0F0F0F;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+    cursor: default;
+}
+.x-dugme:before {
+    color: rgba(255, 255, 255, 0.9);
+    content: "×";
+    font-size: 24px;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+}
+#popup-b {
+    background-color: rgba(0, 0, 0, 0.57);
+    bottom: 0;
+    cursor: default;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    z-index: 1;
+    transition: opacity .5s;
+}
+#popup-b:target {
+    visibility: visible;
+    opacity: 1;
+}
+#popup-t a {
+    text-decoration: none;
+}
+.popup-c {
+    width: 600px;
+    height: 500px;
+    background-color: #D1D1D1;
+    border: 3px solid #080808;
+    display: inline-block;
+    left: 50%;
+    top: 40%;
+    opacity: 0;
+    padding: 3px;
+    position: fixed;
+    text-align: justify;
+    visibility: hidden;
+    z-index: 17;
+    transform: translate(-50%, -50%);
+    border-radius: 7px;
+    transition: opacity 0.5s, top 0.5s;
+}
+.popup-c .popup-cont {
+    padding: 25px 7px 7px 7px;
+    overflow: auto;
+    height: 400px;
+}
+.x-dugme {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    right: -15px;
+    text-align: center;
+    text-decoration: none;
+    top: -20px;
+    width: 30px;
+    border-radius: 15px;
+}
+.x-dugme:hover {
+    background: rgba(0, 142, 0, 0.77);
+}
+#popup-b:target + .popup-c {
+    top: 50%;
+    opacity: 1;
+    visibility: visible;
+}
+#load-html,#load-css {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    right: -15px;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+.hdr {
+    display: inline-block;
+    font-size: larger;
+    margin: 0 15px 5px 15px;
+}
+.hdr a:visited, .hdr a:active, .hdr a {
+    color: #00ff00;
+}

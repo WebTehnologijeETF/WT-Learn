@@ -27,29 +27,34 @@
             {
                 $uname = XSS($_REQUEST['admin']);
                 $pwd = DajRandomPass();
+                $k = md5 ($pwd . "##.##.345/6&55%Moj.H1sh-or-S7l1");
                 $base = InitBase();
-                $uu = $base->prepare("UPDATE korisnici SET PASS = :pass WHERE IME = :ime");
-                $uu->bindValue(":pass", md5 ($pwd . "Moj.H1sh-or-S7l1"), PDO::PARAM_STR);
-                $uu->bindValue(":ime", $uname, PDO::PARAM_STR);
+                $uu = $base->prepare("INSERT INTO reset_pwd SET USER = :u, PASS = :k, STATUS = 'valid'");
+                $uu->bindValue(":k", $k, PDO::PARAM_STR);
+                $uu->bindValue(":u", $uname, PDO::PARAM_STR);
                 $uu->execute();
                 if (!$uu)
                     ProcessError($base);
                 $data = <<< MAIL
 Poštovani $uname,
 
-zatražili ste resetovanje vašeg passworda, pa je naš sistem isti i resetovao.
-Mi znamo da je ovdje trebao biti neki link sa kojim ćete vi potvrditi resetovanje passworda, ali to još nije implementirano :(
+zatraženo je resetovanje vašeg passworda.
+Kopiranjem sljedećeg linka u adresnu trako web pretraživača možete resetirati password: {$_SERVER['SERVER_NAME']}/reset_pwd.php?k=$k&u=$uname
 
-Vaš novi password je: $pwd
+Link će vrijediti sljedećih 24h.
 
-Molimo da ga što prije promijenite!
+
+
+-------------------
+Ako vi niste zatražili resetiranje passworda, molimo ignorišite ovaj mail.
+
 
 Lijep pozdrav,
 WT-Learn tim.
 MAIL;
                 list($ok1, $uname1, $nick1, $nivo1, $mail, $p1) = DajAdmina($uname);
                 PosaljiMail($mail, "WT-Learn::WebMaster - reset passworda", $data);
-                Success("Uspješno promijenjena šifra za admina '$uname!'<br>Poslan vam je email na '$mail'.<br>" .
+                Success("Uspješno poslan link na '$mail' za promjenu šifre za '$uname!'<br>Link vrijedi 24h pa je bolje da što prije resetujete šifru.<br>" .
                     "Provjerite <i>Junk</i> folder. Ako ne dobijete mail za 5 minuta, pokušajte ponovo!", false, 4);
                 GOTO KRAJ;
             }

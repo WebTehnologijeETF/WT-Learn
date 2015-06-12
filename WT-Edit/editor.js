@@ -26,7 +26,7 @@ function Navigiraj (e, s)
         el.children[i].style.display = "none";
     el.children[s].style.display = "block";
     el.children[s].children[1].focus();
-    el.children[s].children[1].resize(true);
+    //el.children[s].children[1].resize(true);
     return false;
 }
 function Submituj ()
@@ -40,25 +40,113 @@ function Submituj ()
     j.value = window.js.getSession().getValue();
     frm.submit();
 }
-function Validiraj (sta)
+function Validiraj (sta, htm)
 {
     var x = sta.getValue();
     var fd = new FormData();
-    fd.append ("validacija", "w3c");
+    fd.append ("validacija", htm);
     fd.append ("sta", x);
     var AX = new XMLHttpRequest();
     AX.open ("POST", "validate_1.php", true);
-
+    var eel = document.getElementById("load-" + htm);
+    eel.style.display = "inline-block";
     AX.send (fd);
     AX.onreadystatechange = function ()
     {
         if (AX.readyState === 4 && AX.status === 200)
         {
-            document.body.innerHTML = "<a href='' onclick = 'document.history.back();'>Nazad</a>"
-            document.body.innerHTML += AX.responseText;
+            alert (AX.responseText);
+            var el = document.getElementById("cont-w3c");
+            var o = JSON.parse (AX.responseText);
+            if (typeof o.status === "undefined" || o.status !== "OK")
+            {
+                el.innerHTML = "<h2>Greška prilikom dobavljanja podataka sa servera!</h1>";
+                document.location.href = "#popup-c";
+                eel.style.display = "none";
+                return;
+            }
+            console.log (o);
+            var g = "";
+            if (o.validan === "da")
+            {
+                g = "<h3 style='color: #007007; text-align: center;'>Vaš kôd je validan! Čestitamo!</h3>";
+            }
+            else
+            {
+                var greske = o.greske;
+
+                g = "<div id='greske'><h2>Greške</h2><ol type='1'>";
+                for (var i = 0; i < greske.length; ++i)
+                    g += "<li>" + greske[i] + "</li>";
+                g += "</ul></div><hr>";
+            }
+            var upozorenja = o.upozorenja;
+            var u = "<div id='upozorenja'><h2>Upozorenja</h2><ol type='1'>";
+            for (var i = 0; i < upozorenja.length; ++i)
+                u += "<li>" + upozorenja[i] + "</li>";
+            u += "</ul></div>";
+            el.innerHTML = g + "\n" + u;
+            eel.style.display = "none";
+            document.location.href = "#popup-b";
         }
     };
+}
+function nodeScriptReplace(node) {
+    if ( nodeScriptIs(node) === true ) {
+        node.parentNode.replaceChild( nodeScriptClone(node) , node );
+    }
+    else {
+        var i        = 0;
+        var children = node.childNodes;
+        while ( i < children.length ) {
+            nodeScriptReplace( children[i++] );
+        }
+    }
 
+    return node;
+}
+function nodeScriptIs(node) {
+    return node.tagName === 'SCRIPT';
+}
+function nodeScriptClone(node){
+    var script  = document.createElement("script");
+    script.text = node.innerHTML;
+    for( var i = node.attributes.length-1; i >= 0; i-- ) {
+        script.setAttribute( node.attributes[i].name, node.attributes[i].value );
+    }
+    return script;
+}
+function Prikazi ()
+{
+    var h = window.html.getSession().getValue();
+    var c = window.css.getSession().getValue();
+    var j = window.js.getSession().getValue();
+    var fd = new FormData();
+    fd.append ("tryit", "true");
+    fd.append ("html", h);
+    fd.append ("css", c);
+    fd.append ("js", j);
+    var ijs = document.getElementById("inc-js");
+    var icss = document.getElementById("inc-css");
+    fd.append ("inc-js", ijs.checked ? "da" : "ne");
+    fd.append ("inc-css", icss.checked ? "da" : "ne");
+    var AX = new XMLHttpRequest();
+    AX.open ("POST", "editor.php", true);
+    AX.onreadystatechange = function ()
+    {
+        if (AX.readyState === 4 && AX.status === 200)
+        {
+            var s = AX.responseText;
+            var w = window.open("", "Try.WT | WTLearn", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=780, height=200, top="+(screen.height-400)+"px, left="+(screen.width-840) + "px");
+            //alert (s);
+            w.document.open();
+            w.document.write(s);
+            w.document.close();
+            //nodeScriptReplace(w.document.getElementsByTagName("html")[0]);
+
+        }
+    };
+    AX.send(fd);
 }
 function Ucitaj ()
 {
@@ -94,9 +182,7 @@ function Ucitaj ()
                 window.js.renderer.updateFull();
                 window.css.renderer.updateFull();
                 window.html.renderer.updateFull();
-                window.html.render();
-                window.js.render();
-                window.css.render();
+
             }
         };
         AX.send(fd);

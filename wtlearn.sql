@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10.10
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: 127.10.245.130:3306
--- Generation Time: May 28, 2015 at 09:43 PM
--- Server version: 5.5.41
--- PHP Version: 5.3.3
+-- Host: 127.0.0.1
+-- Generation Time: Jun 12, 2015 at 03:34 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `komentari` (
   `NOVOST` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `NOVOST` (`NOVOST`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `komentari`
@@ -62,7 +62,13 @@ INSERT INTO `komentari` (`ID`, `AUTOR`, `TEXT`, `EMAIL`, `DATUM`, `NOVOST`) VALU
 (29, 'Bhi', 'Bii će te bojkotovat u buduće. :''(', '', '2015-05-26 16:42:08', 17),
 (30, 'ahjoj', 'ma neeeeeeee, nipošto :(', '', '2015-05-26 18:46:48', 17),
 (31, 'tužnaaa', 'jecam očiju mi :(', '', '2015-05-26 19:11:27', 17),
-(32, 'ni slučajno', 'da smiješ biti tužnaaaaaaa :(', '', '2015-05-26 21:23:30', 17);
+(32, 'ni slučajno', 'da smiješ biti tužnaaaaaaa :(', '', '2015-05-26 21:23:30', 17),
+(33, 'Blaugrana Gent', 'Samo da ti kažem jednu stvar.\n95. minuta, Andres Iniesta', 'mquc@rulzz.edu', '2015-05-29 00:09:30', 1),
+(34, 'Faruk', 'Jel radi ovo? :P Pear mail zakon, sve sam za petu zavrsio :D', 'fljuca1@etf.unsa.ba', '2015-05-29 02:12:09', 19),
+(35, 'Faruk', 'Kada se stavi manje od 10 znakova ovdje u tekst komentara, otvori se prozor na kojem dugme nazad ne radi :P Issue :P', 'fljuca1@etf.unsa.ba', '2015-05-29 02:14:02', 19),
+(37, 'Enil', 'Ma radi link nazad na Mozilli, u biti uradi sljedeće: \n"window.history.back();"\nNe znam što na chromeu radi :O', 'epajic1@etf.unsa.ba', '2015-06-05 19:47:19', 19),
+(38, 'Enil', 'Bože sačuvaj, inkonzistentno ponašanje na različitim browserima, zato ja izbjegavam DOM :P\r\nUgl, window.history.go (-1) je rješenje... popravim nekad :)', 'epajic1@etf.unsa.ba', '2015-06-05 19:53:11', 19),
+(39, 'ehon', 'Šta je, nisi otvarala ovu stranicu više? :(', '', '2015-06-05 19:54:19', 17);
 
 -- --------------------------------------------------------
 
@@ -87,14 +93,14 @@ CREATE TABLE IF NOT EXISTS `korisnici` (
 
 INSERT INTO `korisnici` (`ID`, `IME`, `PASS`, `NIVO`, `EMAIL`, `NICK`) VALUES
 (3, 'admin', 'd5e8b8864620528df53c848fc27a1a89', 0, 'epajic1@etf.unsa.ba', 'Enil'),
-(4, 'enil', '02d1cb126780546819efca9153113441', 0, 'epajic1@etf.unsa.ba', 'Enil Pajić'),
+(4, 'enil', 'd5e8b8864620528df53c848fc27a1a89', 0, 'epajic1@etf.unsa.ba', 'Enil Pajić'),
 (5, 'memi~', '63e4e7b63421263f014e75a4eb677a10', 2, 'egazetic1@etf.unsa.ba', 'Elma'),
 (6, 'biiiiii', '438709f3c5aaaea5af9d2fe9aae7f6ed', 0, 'bcocalic1@etf.unsa.ba', 'Berinček'),
 (7, 'dibi', 'b074b331bca05d5fc09058e4fce41f38', 2, 'ezugor1@etf.unsa.ba', 'Dibac'),
 (8, 'ice', 'a5984d626d8519a3df5f76e1a78e8774', 2, 'adajic1@etf.unsa.ba', 'IceVII'),
 (9, 'faruk', '900d0da027b62670d1e0085f6657f07e', 1, 'fljuca1@etf.unsa.ba', 'Lala'),
 (10, 'neko', 'fb90aead5d7e3ea86381a7747a325bf0', 0, 'epajic1@etf.unsa.ba', 'Nekić'),
-(11, 'vedran', 'fadc4fab86f476ee1d78f8564e1f7955', 0, 'vljubovic1@etf.unsa.ba', 'Vedran');
+(11, 'vedran', 'fadc4fab86f476ee1d78f8564e1f7955', 0, 'vljubovic@etf.unsa.ba', 'Vedran');
 
 -- --------------------------------------------------------
 
@@ -112,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `novosti` (
   `SLIKA` varchar(1024) COLLATE utf8_slovenian_ci NOT NULL,
   `KOMENTARISANJE` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'Da li je dozvoljeno pisanje komentara na ovu novost',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci COMMENT='Tabela NOVOSTI, baza ''WTLearn'', 5. spirala' AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci COMMENT='Tabela NOVOSTI, baza ''WTLearn'', 5. spirala' AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `novosti`
@@ -132,7 +138,25 @@ INSERT INTO `novosti` (`ID`, `NASLOV`, `K_TEXT`, `D_TEXT`, `AUTOR`, `DATUM`, `SL
 (16, 'Dodajem vijest kao novu :3', 'Neki kratki text od 15+ znakova :D', 'Neki \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nDugi text', 'Enil Pajić', '2015-05-25 19:44:26', '', 1),
 (17, 'Zovem se Patetika, drago mi je.', 'Bhi voli kad joj Ehon ovako da da se igra sa ovim simpa RI stvarčicama.', 'Bhi voli kad joj Ehon ovako da da se igra sa ovim simpa RI stvarčicama.\r\nA posebno ga voli jer je uvijek prekrasan i iskren i fer i pošten i jer na njegovim kritikama prema njoj vidi da mu je koliko-toliko stalo do nje, onako iskreno, bez ikakvih uslova i slično. A i Bhii je stalo do Ehona jako.', 'Bhii', '2015-05-26 00:18:15', '', 1),
 (18, 'Završeno commitanje ^^', 'Danas u 23:30 je završeno commitanje projekta...\r\nU nastavku pročitajte kako je moguće &quot;provaliti&quot; na stranicu mijenjanjem POST parametara', 'Naravno, ovdje neće biti pisano kako je to moguće uraditi, nego ćemo samo navesti hipotetski primjer (kojeg sam ja reproducirao i koji bi uspio da nisam napravio serversku validaciju), ali će biti naglašeno koliko je serverska validacija **obavezna**\r\n\r\nKomentar iz nekog od .php fajlova:\r\n\r\n/*\r\n * Mislim da ovdje nema propustâ, nikakvih :D\r\n * Čak sam vodio računa i o naknadnoj promjeni POST parametara,\r\n * npr. ako neko sa nivoom 1 uđe da dodaje administratore\r\n * on neće imati opciju da doda admina sa manjim nivoom (veća priviegija)\r\n * ali će, ako je vješt, biti u mogućnosti naknadno da promijeni POST\r\n * parametre, pa npr. ako na formi nije mogao da odabere nivo polje\r\n * da bude 0 (najveći prioritet) on naknadno može promijeniti POST\r\n * parametar (kao i cijelo zaglavlje) akcija=dodaj_admina&amp;nivo=0\r\n * i onda poslati takav zahtjev. Isto se dešava i ako izmijeni npr.\r\n * akcija=briši_admina&amp;admin=enil da izbriše glavnog admina.\r\n * Zbog toga je urađena server validacija, a istestirano je mijenjanjem\r\n * POST parametara :)\r\n * */\r\n', 'Enil Pajić', '2015-05-28 21:37:05', '', 1),
-(19, 'Promijenjeno vrijeme trajanja sesije', 'Zbog možda iritantne poruke &quot;vaša sesija je istekla&quot; promijenjeno je vrijeme trajanje sesije sa 2 na 5 minuta.\r\nNaravno, vrijeme trajanja sesije se čuva u varijabli i lahko ga je izmijeniti. U realnoj situaciji, trajanje sesije treba da bude oko 15 minuta...', '', 'Enil Pajić', '2015-05-28 21:40:08', '', 1);
+(19, 'Promijenjeno vrijeme trajanja sesije', 'Zbog možda iritantne poruke &quot;vaša sesija je istekla&quot; promijenjeno je vrijeme trajanje sesije sa 2 na 5 minuta.\r\nNaravno, vrijeme trajanja sesije se čuva u varijabli i lahko ga je izmijeniti. U realnoj situaciji, trajanje sesije treba da bude oko 15 minuta...', '', 'Enil Pajić', '2015-05-28 21:40:08', '', 1),
+(20, 'mobile test', 'Hehehehe hehehehehe\r\n', '', 'beno', '2015-06-05 12:26:23', '', 1),
+(21, 'mobile test', 'Hehehehe hehehehehe\r\n', '', 'beno', '2015-06-05 12:28:29', '', 1),
+(23, 'Anes je neko', 'nekko nekko nekko nekko nekko nekko nekko', 'Hhahahahah', 'nekkkkkkkkkkkkkkkk', '2015-06-05 19:44:18', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reset_pwd`
+--
+
+CREATE TABLE IF NOT EXISTS `reset_pwd` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `USER` varchar(128) COLLATE utf8_slovenian_ci NOT NULL,
+  `PASS` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
+  `VRIJEME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `STATUS` varchar(32) COLLATE utf8_slovenian_ci NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=14 ;
 
 --
 -- Constraints for dumped tables

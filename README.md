@@ -13,6 +13,3 @@ CSS ili JS kôd sadži određene funkcionalnosti (npr. da li je pozadina nekog e
 # "Imaginarnost?"
 Pošto ovo nije sistem za neku firmu ili organizaciju, ne možemo pričati o tome da li je imaginarna ili ne.
 Ovo rješenje, ako uspije biti ono što je zamišljeno, će možda biti integrisano u neki veći sistem (Zamger možda?) ili neki neovisni sistem.
-
-### NOTE
-##### Možda će biti potrebno uraditi **TRUNCATE** tabela prije importovanja :)

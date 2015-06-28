@@ -40,6 +40,14 @@ function Submituj ()
     j.value = window.js.getSession().getValue();
     frm.submit();
 }
+function Autotestiraj (id)
+{
+    alert ("Not implemented! Slalo bi HTML, CSS, JS kôd serveru i ovaj ID autotesta: " + id +  ".\n Koristiti ću phantomjs za procesiranje JS-a... problem je kako korisnika nazad obavijestiti, možda websocketi... vidjećemo :D");
+}
+function AutotestirajZadatak (id)
+{
+    alert ("Not implemented! Slalo bi HTML, CSS, JS kôd serveru i ovaj ID zadatka: " + id + ", a server bi izvršio sve autotestove za taj zadatak");
+}
 function Validiraj (sta, htm)
 {
     var x = sta.getValue();

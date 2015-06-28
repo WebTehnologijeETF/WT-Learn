@@ -19,6 +19,11 @@
 }
 .desno {
     text-align: right;
+    float: right;
+    display: inline-block;
+}
+.desno:after {
+    clear: both;
 }
 .tabovi ul:not(.opcije) li a {
     min-width: 80px;
@@ -218,3 +223,5 @@
 .hdr a:visited, .hdr a:active, .hdr a {
     color: #00ff00;
 }
+
+

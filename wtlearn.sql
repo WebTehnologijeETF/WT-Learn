@@ -3,11 +3,10 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2015 at 03:34 AM
+-- Generation Time: Jun 28, 2015 at 02:57 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -20,6 +19,83 @@ SET time_zone = "+00:00";
 --
 -- Database: `wtlearn`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `at_autotestovi`
+--
+
+CREATE TABLE IF NOT EXISTS `at_autotestovi` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAZIV` varchar(512) COLLATE utf8_slovenian_ci NOT NULL,
+  `KOMENTAR` varchar(1024) COLLATE utf8_slovenian_ci NOT NULL,
+  `CODE` text COLLATE utf8_slovenian_ci NOT NULL,
+  `REZULTAT` text COLLATE utf8_slovenian_ci NOT NULL,
+  `DATUM` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ZADATAK` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `ZADATAK_AT` (`ZADATAK`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `at_autotestovi`
+--
+
+INSERT INTO `at_autotestovi` (`ID`, `NAZIV`, `KOMENTAR`, `CODE`, `REZULTAT`, `DATUM`, `ZADATAK`) VALUES
+(1, 'AT 1', '', 'var x = 5;\r\nconsole.log (x);', '5', '2015-06-27 15:59:45', 1),
+(2, 'AT 2', 'Neki komentar xD', 'var y = 10;\r\nconsole.log (y);', '10', '2015-06-27 15:59:45', 1),
+(3, 'AT 1', '', 'var y = "y";\r\nconsole.log (y);', 'y', '2015-06-27 15:59:45', 2),
+(4, 'AT 1', '', 'var xx;', '', '2015-06-27 15:59:45', 4),
+(5, 'AT 3', 'Neki koment', 'var y = "hehe";\r\nvar z = ''hehhe'';\r\n//test tooltip\r\n\\"\r\n\\''', '1', '2015-06-27 19:00:35', 1),
+(6, 'Neki testni naziv', 'Neki komentar, šta radi atest?', '//neki kôd', 'neki rezz', '2015-06-27 23:52:04', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `at_tutorijali`
+--
+
+CREATE TABLE IF NOT EXISTS `at_tutorijali` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAZIV` varchar(512) COLLATE utf8_slovenian_ci NOT NULL,
+  `AK_GODINA` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `at_tutorijali`
+--
+
+INSERT INTO `at_tutorijali` (`ID`, `NAZIV`, `AK_GODINA`) VALUES
+(1, 'Tutorijal 1 (HTML)', 2015),
+(2, 'Tutorijal 2 (CSS)', 2015),
+(3, 'Moj projekat (TEST)', 2015);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `at_zadaci`
+--
+
+CREATE TABLE IF NOT EXISTS `at_zadaci` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAZIV` varchar(512) COLLATE utf8_slovenian_ci NOT NULL,
+  `TUTORIJAL` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `TUTORIJAL` (`TUTORIJAL`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `at_zadaci`
+--
+
+INSERT INTO `at_zadaci` (`ID`, `NAZIV`, `TUTORIJAL`) VALUES
+(1, 'Zadatak 1', 1),
+(2, 'Zadatak 2', 1),
+(3, 'Zadatak 3', 1),
+(4, 'Zadatak 1', 2),
+(5, 'Zadatak 2', 2);
 
 -- --------------------------------------------------------
 
@@ -156,18 +232,29 @@ CREATE TABLE IF NOT EXISTS `reset_pwd` (
   `VRIJEME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `STATUS` varchar(32) COLLATE utf8_slovenian_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `at_autotestovi`
+--
+ALTER TABLE `at_autotestovi`
+  ADD CONSTRAINT `zadatak_autotest` FOREIGN KEY (`ZADATAK`) REFERENCES `at_zadaci` (`ID`);
+
+--
+-- Constraints for table `at_zadaci`
+--
+ALTER TABLE `at_zadaci`
+  ADD CONSTRAINT `tutorijal_zadatak` FOREIGN KEY (`TUTORIJAL`) REFERENCES `at_tutorijali` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `komentari`
 --
 ALTER TABLE `komentari`
   ADD CONSTRAINT `Vezemo komentar sa novosti` FOREIGN KEY (`NOVOST`) REFERENCES `novosti` (`ID`) ON DELETE CASCADE;
-SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

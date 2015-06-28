@@ -37,8 +37,16 @@ function InitBase()
     global $pbaza;
     $b = $baza;
     $h = $hbaza;
-    $veza = new PDO("mysql:dbname=$b;host=$h;charset=utf8", $ubaza, $pbaza);
-    $veza->exec("set names utf8");
+    try
+    {
+        $veza = new PDO("mysql:dbname=$b;host=$h;charset=utf8", $ubaza, $pbaza);
+        $veza->exec("set names utf8");
+    }
+    catch (PDOException $E)
+    {
+        Greska("Greška prilikom konektovanja na bazu!", false, 1);
+        throw $E;
+    }
     unset ($b);
     unset ($h);
     return $veza;

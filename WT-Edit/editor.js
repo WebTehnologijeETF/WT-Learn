@@ -42,7 +42,42 @@ function Submituj ()
 }
 function Autotestiraj (id)
 {
-    alert ("Not implemented! Slalo bi HTML, CSS, JS kôd serveru i ovaj ID autotesta: " + id +  ".\n Koristiti ću phantomjs za procesiranje JS-a... problem je kako korisnika nazad obavijestiti, možda websocketi... vidjećemo :D");
+        var h = window.html.getSession().getValue();
+        var c = window.css.getSession().getValue();
+        var j = window.js.getSession().getValue();
+        var fd = new FormData();
+        fd.append ("tryit", "true");
+        fd.append ("html", h);
+        fd.append ("css", c);
+        fd.append ("js", j);
+        var ijs = document.getElementById("inc-js");
+        var icss = document.getElementById("inc-css");
+        fd.append ("inc-js", ijs.checked ? "da" : "ne");
+        fd.append ("inc-css", icss.checked ? "da" : "ne");
+        var AX = new XMLHttpRequest();
+        AX.open ("POST", "editor.php", true);
+        AX.onreadystatechange = function ()
+        {
+            if (AX.readyState === 4 && AX.status === 200)
+            {
+                var s = AX.responseText;
+                alert (s);
+                var AX2 = new XMLHttpRequest();
+                AX2.open ("POST", "atrun.php", true);
+                var fd2 = new FormData();
+                fd2.append ("atid", parseInt(id));
+                fd2.append ("code", s);
+                AX2.send (fd2);
+                AX2.onreadystatechange = function ()
+                {
+                    if (AX2.readyState === 4 && AX2.status === 200)
+                    {
+                        alert (AX2.responseText);
+                    }
+                };
+            }
+        };
+        AX.send(fd);
 }
 function AutotestirajZadatak (id)
 {

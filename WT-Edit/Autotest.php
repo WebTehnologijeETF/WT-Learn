@@ -4,7 +4,9 @@ class Autotest
     private $id, $zid, $tid;
     private $tut = "", $zad = "", $me;
     private $code, $comm, $result;
-    function __construct($id, $zid, $tid, $tut, $zad, $me, $code, $comm, $result)
+    private $aresult1 = "",$aresult2 = "", $aresult3 = "";
+    private $cs = true;
+    function __construct($id, $zid, $tid, $tut, $zad, $me, $code, $comm, $result, $ar1, $ar2, $ar3, $cs)
     {
         $this->zad = $zad;
         $this->tut = $tut;
@@ -15,20 +17,32 @@ class Autotest
         $this->id = $id;
         $this->tid = $tid;
         $this->zid = $zid;
+        $this->aresult1 = $ar1;
+        $this->aresult2 = $ar2;
+        $this->aresult3 = $ar3;
+        $this->cs = $cs;
     }
     function GetID () {return $this->id;}
     function GetTutID () {return $this->tid;}
     function GetZadID () {return $this->zid;}
     function GetTitle () {return $this->me;}
-    function SetTitle ($c) {return $this->me = $c;}
+    function SetTitle ($c) {$this->me = $c;}
     function GetZadTitle () {return $this->tut;}
     function GetTutTitle () {return $this->zad;}
     function GetCode () {return $this->code;}
-    function SetCode ($c) {return $this->code = $c;}
+    function SetCode ($c) {$this->code = $c;}
     function GetComment () {return $this->comm;}
-    function SetComment ($c) {return $this->comm = $c;}
+    function SetComment ($c) {$this->comm = $c;}
     function GetResult () {return $this->result;}
-    function SetResult ($c) {return $this->result = $c;}
+    function SetResult ($c) {$this->result = $c;}
+    function GetAltResult1 () {return $this->aresult1;}
+    function SetAltResult1 ($c) {$this->aresult1 = $c;}
+    function GetAltResult2 () {return $this->aresult2;}
+    function SetAltResult2 ($c) {$this->aresult2 = $c;}
+    function GetAltResult3 () {return $this->aresult3;}
+    function SetAltResult3 ($c) {$this->aresult3 = $c;}
+    function GetCaseSensitive () {return $this->cs;}
+    function SetCaseSensitive ($c) {$this->cs = $c;}
 }
 class Zadatak
 {

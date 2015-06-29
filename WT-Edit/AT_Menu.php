@@ -74,20 +74,22 @@ function DajATove($y)
         $ETUT = new Tutorijal($p['ID'], $p['NAZIV'], $y);
         foreach ($zad as $at)
         {
-            $atovi = $b->query("SELECT ID, NAZIV, KOMENTAR, CODE, REZULTAT, ZADATAK FROM at_autotestovi WHERE ZADATAK = {$at['ID']}");
+            $atovi = $b->query("SELECT ID, NAZIV, KOMENTAR, CODE, REZULTAT,
+                                ZADATAK, ALT_REZULTAT1, ALT_REZULTAT2, ALT_REZULTAT3,
+                                CASE_SENSITIVE FROM at_autotestovi WHERE ZADATAK = {$at['ID']}");
             if (!$atovi)
                 ProcessError($b);
             $EZAD = new Zadatak($at['ID'], $at['NAZIV'], $ETUT->GetID());
             foreach ($atovi as $AT)
-            {
                 $EZAD->DodajAT(new Autotest ($AT['ID'], #ID autotesta
                     $at['ID'], #ID zadatka
                     $p['ID'],  #ID tutorijala
                     $p['NAZIV'], #naziv tutorijala ex. Tutorijal 1 (HTML)
                     $at['NAZIV'], #naziv zadatka ex. Zadatak 1
                     $AT['NAZIV'], #naziv autotesta, ex "AT 1" ili samo "1"
-                    $AT['CODE'], $AT['KOMENTAR'], $AT['REZULTAT']));
-            }
+                    $AT['CODE'], $AT['KOMENTAR'], $AT['REZULTAT'],
+                    $AT['ALT_REZULTAT1'], $AT['ALT_REZULTAT2'], $AT['ALT_REZULTAT3'],
+                    $AT['CASE_SENSITIVE']));
             $ETUT->DodajZadatak($EZAD);
         }
         $TUTOVI[] = $ETUT; #dodajemo sve zadatke za jedan tut

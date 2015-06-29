@@ -22,7 +22,8 @@ if (isset($_REQUEST['tryit']))
         $i = strpos ($html, "</body>");
         $v = count (explode(PHP_EOL, (substr($html, 0, $i))));
         //$html = substr_replace($html, "<img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBR‌​AA7\" onload=\"$js\" />" . PHP_EOL, $i, 0);
-        $html = substr_replace($html, "<script>" . PHP_EOL . $js . PHP_EOL . "window.onerror = function(m, u, l) { var k = $v; alert('Desila se JavaScript greška u Vašem kôdu!\\n\\nGREŠKA (en-US): ' + m + '\\nLinija: ' + parseInt(l - k));}</script>" . PHP_EOL, $i, 0);
+        $html = substr_replace($html, "<script>" . PHP_EOL . $js . PHP_EOL .
+            "window.onerror = function(m, u, l) { var k = $v; alert('Desila se JavaScript greška u Vašem kôdu!\\n\\nGREŠKA (en-US): ' + m + '\\nLinija: ' + parseInt(l - k));}" . PHP_EOL ."</script>" . PHP_EOL, $i, 0);
     }
     echo $html;
     exit();

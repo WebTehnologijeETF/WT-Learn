@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2015 at 02:57 AM
+-- Generation Time: Jun 29, 2015 at 06:10 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -32,6 +32,10 @@ CREATE TABLE IF NOT EXISTS `at_autotestovi` (
   `KOMENTAR` varchar(1024) COLLATE utf8_slovenian_ci NOT NULL,
   `CODE` text COLLATE utf8_slovenian_ci NOT NULL,
   `REZULTAT` text COLLATE utf8_slovenian_ci NOT NULL,
+  `ALT_REZULTAT1` text COLLATE utf8_slovenian_ci NOT NULL,
+  `ALT_REZULTAT2` text COLLATE utf8_slovenian_ci NOT NULL,
+  `ALT_REZULTAT3` text COLLATE utf8_slovenian_ci NOT NULL,
+  `CASE_SENSITIVE` tinyint(1) NOT NULL DEFAULT '1',
   `DATUM` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ZADATAK` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
@@ -42,13 +46,13 @@ CREATE TABLE IF NOT EXISTS `at_autotestovi` (
 -- Dumping data for table `at_autotestovi`
 --
 
-INSERT INTO `at_autotestovi` (`ID`, `NAZIV`, `KOMENTAR`, `CODE`, `REZULTAT`, `DATUM`, `ZADATAK`) VALUES
-(1, 'AT 1', '', 'var x = 5;\r\nconsole.log (x);', '5', '2015-06-27 15:59:45', 1),
-(2, 'AT 2', 'Neki komentar xD', 'var y = 10;\r\nconsole.log (y);', '10', '2015-06-27 15:59:45', 1),
-(3, 'AT 1', '', 'var y = "y";\r\nconsole.log (y);', 'y', '2015-06-27 15:59:45', 2),
-(4, 'AT 1', '', 'var xx;', '', '2015-06-27 15:59:45', 4),
-(5, 'AT 3', 'Neki koment', 'var y = "hehe";\r\nvar z = ''hehhe'';\r\n//test tooltip\r\n\\"\r\n\\''', '1', '2015-06-27 19:00:35', 1),
-(6, 'Neki testni naziv', 'Neki komentar, šta radi atest?', '//neki kôd', 'neki rezz', '2015-06-27 23:52:04', 1);
+INSERT INTO `at_autotestovi` (`ID`, `NAZIV`, `KOMENTAR`, `CODE`, `REZULTAT`, `ALT_REZULTAT1`, `ALT_REZULTAT2`, `ALT_REZULTAT3`, `CASE_SENSITIVE`, `DATUM`, `ZADATAK`) VALUES
+(1, 'AT 1', '', 'var x = 5;\r\nconsole.log (x);', '5', '', '', '', 1, '2015-06-27 15:59:45', 1),
+(2, 'AT 2', 'Neki komentar xD', 'var y = 10;\r\nconsole.log (y);', '10', '', '', '', 1, '2015-06-27 15:59:45', 1),
+(3, 'AT 1', '', 'var y = "y";\r\nconsole.log (y);', 'y', '', '', '', 1, '2015-06-27 15:59:45', 2),
+(4, 'AT 1', '', 'var xx;', '', '', '', '', 1, '2015-06-27 15:59:45', 4),
+(5, 'AT 3', 'Neki koment', 'var y = "hehe";\r\nvar z = ''hehhe'';\r\n//test tooltip\r\n\\"\r\n\\''', '1', '', '', '', 1, '2015-06-27 19:00:35', 1),
+(6, 'Neki testni naziv', 'Neki komentar, šta radi atest?', '//neki kôd', 'neki rezz', '', '', '', 1, '2015-06-27 23:52:04', 1);
 
 -- --------------------------------------------------------
 
